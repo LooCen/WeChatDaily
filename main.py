@@ -53,6 +53,6 @@ client = WeChatClient(app_id, app_secret)
 
 wm = WeChatMessage(client)
 city, wea, temperature, humidity, wind, airQuality = get_weather()
-data = { "city":{"value":city, "color": '#87CEFA'},"weather":{"value":wea, "color":'\033[94m'},"temperature":{"value":temperature, "color":get_random_color()},"humidity":{"value":humidity, "color":get_random_color()},"wind":{"value":wind, "color":get_random_color()},"airQuality":{"value":airQuality, "color":get_random_color()},"love_days":{"value":get_count(), "color":get_random_color()},"marry_days":{"value":get_marryday(), "color":get_random_color()},"birthday_left":{"value":get_birthday(), "color":get_random_color()},"words":{"value":get_words(), "color":get_random_color()}}
+data = { "city":{"value":city, "color": '#00BFFF'},"weather":{"value":wea, "color": '#00BFFF'},"temperature":{"value":temperature, "color": '#00BFFF'},"humidity":{"value":humidity, "color": '#00BFFF'},"wind":{"value":wind, "color": '#00BFFF'},"airQuality":{"value":airQuality, "color": '#00BFFF'},"love_days":{"value":get_count(), "color": '#00BFFF'},"marry_days":{"value":get_marryday(), "color": '#00BFFF'},"birthday_left":{"value":get_birthday(), "color": '#00BFFF'},"words":{"value":get_words(), "color":get_random_color()}}
 res = wm.send_template(user_id, template_id, data)
 print(res)
