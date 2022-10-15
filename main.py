@@ -23,7 +23,7 @@ def get_weather():
   url = "http://autodev.openspeech.cn/csp/api/v2.1/weather?openId=aiuicus&clientType=android&sign=android&city=" + city
   res = requests.get(url).json()
   weather = res['data']['list'][0]
-  return weather['date'], weather['city'], weather['weather'], math.floor(weather['temp']), weather['humidity'], weather['wind'], weather['airQuality']
+  return weather['city'], weather['weather'], math.floor(weather['temp']), weather['humidity'], weather['wind'], weather['airQuality']
 
 def get_count():
   delta = today - datetime.strptime(start_date, "%Y-%m-%d")
@@ -53,6 +53,6 @@ client = WeChatClient(app_id, app_secret)
 
 wm = WeChatMessage(client)
 today, city, wea, temperature, humidity, wind, airQuality = get_weather()
-data = { "today":{"value":today, "color": '#7fb80e'},"city":{"value":city, "color": '#009ad6'},"weather":{"value":wea, "color": '#009ad6'},"temperature":{"value":temperature, "color": '#009ad6'},"humidity":{"value":humidity, "color": '#009ad6'},"wind":{"value":wind, "color": '#009ad6'},"airQuality":{"value":airQuality, "color": '#009ad6'},"love_days":{"value":get_count(), "color": '#f58f98'},"marry_days":{"value":get_marryday(), "color": '#f15a22'},"birthday_left":{"value":get_birthday(), "color": '#ef5b9c'},"words":{"value":get_words(), "color":get_random_color()}}
+data = { "city":{"value":city, "color": '#7fb80e'},"weather":{"value":wea, "color": '#009ad6'},"temperature":{"value":temperature, "color": '#009ad6'},"humidity":{"value":humidity, "color": '#009ad6'},"wind":{"value":wind, "color": '#009ad6'},"airQuality":{"value":airQuality, "color": '#009ad6'},"love_days":{"value":get_count(), "color": '#f58f98'},"marry_days":{"value":get_marryday(), "color": '#f15a22'},"birthday_left":{"value":get_birthday(), "color": '#ef5b9c'},"words":{"value":get_words(), "color":get_random_color()}}
 res = wm.send_template(user_id, template_id, data)
 print(res)
